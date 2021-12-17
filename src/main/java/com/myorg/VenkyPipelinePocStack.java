@@ -28,14 +28,18 @@ public class VenkyPipelinePocStack extends Stack {
                  .build();*/
 
         CodePipeline pipeline = CodePipeline.Builder.create(this, "pipeline")   
-             .pipelineName("VenkyPipelinePOC")
-             .synth(ShellStep.Builder.create("Synth")
-                /*.input(CodePipelineSource.gitHub("<owner>/<repo>", "main"))*/
-                .input(CodePipelineSource.connection("<owner>/<repo>", "main", ConnectionSourceOptions.builder()
-                         .connectionArn("<connection-arn>>")
+            .pipelineName("VenkyPipelinePOC")
+            //.selfMutation(false)  
+            .synth(ShellStep.Builder.create("Synth")
+                .input(CodePipelineSource.connection("venky23042021/POC-Pipeline", "master", ConnectionSourceOptions.builder()
+                         .connectionArn("arn:aws:codestar-connections:us-east-1:821518525729:connection/24e84db8-93f0-403d-86fa-eb8288406f0f")
                          .build()))
-                .commands(Arrays.asList("mvn clean install", "cdk synth"))
+                .commands(Arrays.asList("mvn clean install", "npx cdk synth", "npx cdk ls"))
                 .build())
-             .build();
+            .build();
+        
+        /*final VenkyPipelinePocStage deploy = new VenkyPipelinePocStage(this, "Deploy");
+        
+        pipeline.addStage(deploy);*/
     }
 }
