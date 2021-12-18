@@ -28,20 +28,13 @@ public class VenkyPipelinePocStack extends Stack {
                  .build();*/
 
         CodePipeline pipeline = CodePipeline.Builder.create(this, "pipeline")   
-             .pipelineName("VenkyPipelinePOC")
-             .synth(ShellStep.Builder.create("Synth")
-                /*.input(CodePipelineSource.gitHub("<owner>/<repo>", "main"))*/
-                .input(CodePipelineSource.connection("venky23042021/POC-Java", "main", ConnectionSourceOptions.builder()
-                         .connectionArn("arn:aws:codestar-connections:us-east-1:821518525729:connection/d5127fd5-7f1f-4ab2-a072-a60dd3ae0f41")
-                         .build()))
-                .commands(Arrays.asList("mvn clean install", "npx cdk synth"))
-            /*.pipelineName("VenkyPipelinePOC")
+            .pipelineName("VenkyPipelinePOC")
             //.selfMutation(false)  
             .synth(ShellStep.Builder.create("Synth")
-                .input(CodePipelineSource.connection("venky23042021/POC-Pipeline", "master", ConnectionSourceOptions.builder()
+                .input(CodePipelineSource.connection("venky23042021/POC-Java", "main", ConnectionSourceOptions.builder()
                          .connectionArn("arn:aws:codestar-connections:us-east-1:821518525729:connection/24e84db8-93f0-403d-86fa-eb8288406f0f")
                          .build()))
-                .commands(Arrays.asList("mvn clean install", "npx cdk synth", "npx cdk ls"))*/
+                .commands(Arrays.asList("mvn clean install", "npx cdk synth", "npx cdk ls"))
                 .build())
             .build();
         
