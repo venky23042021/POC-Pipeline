@@ -38,8 +38,8 @@ public class VenkyPipelinePocStack extends Stack {
                 .build())
             .build();
         
-        /*final VenkyPipelinePocStage deploy = new VenkyPipelinePocStage(this, "Deploy");
+        final VenkyPipelinePocStage deploy = new VenkyPipelinePocStage(this, "Deploy");
         
-        pipeline.addStage(deploy);*/
+        pipeline.addStage(deploy);
     }
 }
