@@ -8,13 +8,6 @@ public class VenkyPipelinePocApp {
     public static void main(final String[] args) {
         App app = new App();
 
-        new VenkyJavaPocStack(app, "VenkyJavaPocStack", StackProps.builder()
-        .env(new Environment.Builder()
-                .account("821518525729")
-                .region("us-east-1")
-                .build())
-        .build());
-
         final VenkyPipelinePocStack pipelineStack = new VenkyPipelinePocStack(app, "VenkyPipelinePocStack", StackProps.builder()
                 .env(new Environment.Builder()
                         .account("821518525729")
