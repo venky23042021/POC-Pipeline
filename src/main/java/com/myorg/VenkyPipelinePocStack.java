@@ -31,13 +31,9 @@ public class VenkyPipelinePocStack extends Stack {
             .pipelineName("VenkyPipelinePOC")
             //.selfMutation(false)  
             .synth(ShellStep.Builder.create("Synth")
-                /*.input(CodePipelineSource.connection("venky23042021/POC-Pipeline", "develop", ConnectionSourceOptions.builder()
+                .input(CodePipelineSource.connection("venky23042021/POC-Pipeline", "develop", ConnectionSourceOptions.builder()
                          .connectionArn("arn:aws:codestar-connections:us-east-1:821518525729:connection/24e84db8-93f0-403d-86fa-eb8288406f0f")
-                         .build())) //This code connects to github*/
-
-                .input(CodePipelineSource.connection("dexter/venky-pipeline-poc-bb", "main", ConnectionSourceOptions.builder()
-                         .connectionArn("arn:aws:codestar-connections:us-east-1:821518525729:connection/c5ad6017-d169-4c56-a786-05dd51aab9dc")
-                         .build())) //This code connects to bitbucket
+                         .build()))
                 .commands(Arrays.asList("mvn clean install", "npx cdk synth", "npx cdk ls"))
                 .build())
             .build();
